@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #020100e0;
+    padding: 10px 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: rgb(163, 69, 21);
+    text-decoration:none;
+    font-size: 20px;
+    padding: 26px;
+  
+    
+}
+
+nav ul li a:hover {
+    color: #f08214;
+}
+
+.hero {
+    background-image: url('james-william-qMpsMY3q-Qg-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    animation: change 10s infinite ease-in-out;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+.offer button {
+    background-color: #8B4513;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    position: square;
+    z-index: 1; 
+}
+
+.offer button:hover {
+    background-color: #D2691E;
+}
+
+.description {
+        padding: 40px 20px;
+        text-align: center;
+        background-color: #f9f9f9; 
+        color: #333; 
+    }
+
+    .description .content {
+        max-width: 800px;
+        margin: 0 auto; 
+    }
+
+    .description h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: #8B4513; 
+    }
+
+    .description p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+.p h1{
+    margin: 50px ; 
+    padding: 6px;
+    font-size: 60px;
+}
+.p h3{
+    margin: 60px ; 
+    padding: 50px 20px; 
+    text-align: center;
+    
+}
+
+.offer .offer_box{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0 15px;
+    margin: 5auto;
+}
+
+.offer .offer_box .offer_card_1{
+    width: 700px;
+    height: 300px;
+    margin-left: 15px;
+}
+
+.offer .offer_box .offer_card_1 .offer_img{
+    width: 800px;
+    height: 700px;
+    margin-left: 15px;
+    margin-right: 20px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.offer .offer_box .offer_card_1 .offer_img img{
+    width: 100%;
+    height: 90%;
+    object-position: center;
+    object-fit: cover;
+    margin-left: 15px;
+}
+
+.offer .offer_box .offer_card_1 .offer_tag{
+    position: relative;
+    bottom: 400px;
+    color: #fff;
+    padding:0 30px;
+    margin-left: 15px;
+    
+}
+
+.offer .offer_box .offer_card_1 .offer_tag h2{
+    font-size: 40px;
+}
+
+.offer .offer_box .offer_card_1 .offer_tag h1{
+    font-family: QuillScript;
+    font-size: 60px;
+    color: #facc22;
+}
+
+.offer .offer_box .offer_card_1 .offer_tag p{
+    margin-top: 30px;
+    width: 200px;
+    text-align: justify;
+    line-height: 22px;
+}
+
+.offer .offer_box .offer_card_1 .offer_tag .offer_btn{
+    color: #fff;
+    border: 2px solid #facc22;
+    padding: 10px 20px;
+    text-decoration: none;
+    position: relative;
+    top: 30px;
+    z-index: 2;
+    transition: 0.3s;
+}
+
+.offer .offer_box .offer_card_1 .offer_tag .offer_btn::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #facc22;
+    width: 0;
+    height: 100%;
+    transition: 0.3s;
+    z-index: -1;
+}
+
+.offer .offer_box .offer_card_1 .offer_tag .offer_btn:hover::before{
+    width: 100%;
+}
+
+.offer .offer_box .offer_card_2 .offer_img{
+    width: 800px;
+    height: 700px;
+    margin-right: 20px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.offer .offer_box .offer_card_2 .offer_img img{
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+    object-position: center;
+    
+}
+
+.offer .offer_box .offer_card_2 .offer_tag{
+    position: relative;
+    bottom: 400px;
+    color: #fff;
+    padding:0 30px;    
+    
+}
+
+.offer .offer_box .offer_card_2 .offer_tag h2{
+    font-size: 40px;
+}
+
+.offer .offer_box .offer_card_2 .offer_tag .offer_btn{
+    color: #fff;
+    border: 2px solid #facc22;
+    padding: 10px 20px;
+    text-decoration: none;
+    position: relative;
+    top: 30px;
+    z-index: 2;
+    transition: 0.3s;
+}
+
+.offer .offer_box .offer_card_2 .offer_tag .offer_btn::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #facc22;
+    width: 0;
+    height: 100%;
+    transition: 0.3s;
+    z-index: -1;
+}
+
+.offer .offer_box .offer_card_2 .offer_tag .offer_btn:hover::before{
+    width: 100%;
+    margin-right: 8px;
+}
+
+.gallery {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.gallery-text {
+    margin-top: -40px; 
+}
+
+
+.gallery h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.gallery-items {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.gallery-items img {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+}
+  
+.footer {
+        background-image: url('WhatsApp Image 2024-10-14 at 09.52.16_b96d5b9e.jpg'); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        width: 100%;
+        height: 350px;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    /* Overlay for the footer content */
+    .footer-content {
+        background-color: rgba(198, 109, 7, 0.6); 
+        padding: 15px;
+        border-radius: 8px;
+        width: 100%;
+        height: 150px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer div {
+        flex: 1;
+        text-align: center;
+        margin: 5px 0;
+    }
+
+    .footer a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+
+    .footer-links{
+    width: 85%;
+    margin: auto;
+    display:flex;
+    flex-wrap:wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap:20px
+   }
+   .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 80%; 
+    flex-wrap: wrap;
+    width: 80%; 
+    max-width: 1200px; 
+}
+
+.footer-col {
+    flex: 1; 
+    margin: 20px;
+}
+
+.footer-col h1, .footer-col h3 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.footer-col p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.footer-col a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0px;
+    font-size: 16px;
+}
+
+.footer-col a:hover {
+    color:#f08214;
+}
+.social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #f08214;
+}
+
+    .footer a:hover {
+        text-decoration: underline;
+    }
+
+
+   
+@keyframes change{
+    0%{
+        background-image: url(jon-tyson-pEGyLHAPfVw-unsplash.jpg);
+    }
+    20%{
+        background-image: url(james-william-qMpsMY3q-Qg-unsplash.jpg);
+    }
+    40%{
+        background-image: url(maria-BsmsRdW_hEk-unsplash.jpg);
+        
+    }
+    60%{
+        background-image: url(nathan-dumlao-r-KfktlyBL0-unsplash.jpg);
+    }
+    80%{
+        background-image: url(brooke-cagle-X4RJG4aNi8o-unsplash.jpg);
+    
+    }
+    100%{
+        background-image: url(jon-tyson-pEGyLHAPfVw-unsplash.jpg);
+    }
+
+}
+</style>
+</head>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="Untitled.png" alt="Coffee Logo" class="logo">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="story.html">Our Story</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="contec.php">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Start your Day With a Coffee</h1>
+        <p>Just brewed happiness in a cup!</p>
+        <div class="offer">
+            <a href="shop.html">
+            <div class="brown-rectangle"></div>
+            <button>Offers - Shop Now</button>
+            </a>
+        </div>
+    </section>
+
+    <section class="description">
+        <div class="content">
+            <h2>Welcome to Brew and Beans Coffee Shop!</h2>
+            <p>At Brew and Beans, every coffee tells a story. Our mission is to bring you the finest flavors, freshly brewed with love and care. Whether you’re looking for a quick pick-me-up or a cozy place to unwind, we have something special for everyone. Join us for a cup of warmth, a bite of something delicious, and an experience that’s truly memorable. Visit our online store and bring the Brew and Beans experience home!</p>
+        </div>
+    </section>
+    
+    <div class="offer">
+
+        <div class="offer_box">
+
+            <div class="offer_card_1">
+
+                <div class="offer_img">
+                    <img src="jonas-jacobsson-RFHFV7lVQBY-unsplash(1) - Copy.jpg">
+                </div>
+
+                <div class="offer_tag">
+
+                    <h1>40%</h1>
+                    <p>
+                        First time here? Get 40% off your first order at Brew and Beans Coffee Shop! It's our way of saying welcome, enjoy delicious flavors at a great discount!
+                    </p>
+                    <a href="#" class="offer_btn"><i class="fa-solid fa-shopping-cart"></i> Order Now</a>
+
+
+                </div>
+
+            </div>
+
+            <div class="offer_card_2">
+
+                <div class="offer_img">
+                    <img src="nahima-aparicio-fWPQDd1ZeBI-unsplash.jpg">
+                </div>
+
+                <div class="offer_tag">
+
+                    <h2>Buy 2 sandwiches and get a <br>free Hot Coffe</h2>
+                    <p>
+                        Enjoy a tasty deal at Brew and Beans Coffee Shop! Buy any 2 sandwiches and get a free hot coffee on the house. Perfect for a delicious break,grab yours today!
+                    </p>
+                    <a href="shop.html" class="offer_btn"><i class="fa-solid fa-burger"></i>Order Now</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <section class="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-items">
+            <img src="r.jpg" alt="Coffee 1">
+            <img src="ur.jpg" alt="Coffee 2">
+            <img src="Untitled..jpg" alt="Coffee 3">
+            <img src="images 1.jpg" alt="Coffee 4">
+            <img src="oak-bond-coffee-co-acPPvMZyqV0-unsplash.jpg" alt="Coffee 5">
+        </div>
+    </section>
+    <footer>
+      
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-row">
+                    <div class="footer-col">
+                        <h2>Brew And Beans</h2>
+                        <img src="Untitled.png" alt="Coffee Logo" class="logo">
+                        </div>
+                        <div class="footer-col">
+                           <ul>
+                                <h2>Explore</h2>
+                        <a href="index.html">Home</a>
+                        <a href="story.html">Our Story</a>
+                        <a href="shop.html">Shop</a>
+                        <a href="menu.html">Menu</a>
+                        <a href="contec.php">Contact</a>
+                        </ul>
+                    </div>
+        
+                    <div class="footer-col">
+                        <h3>Contact With Us</h3>
+                        <p>High Level, Colombo 06</p>
+                        <p>+94112367464</p>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                       
+                    </div>
+                </div>
+    </div>
+    
+</body>
+</html>

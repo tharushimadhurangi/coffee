@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #020100e0;
+    padding: 10px 20px;
+}
+
+nav {
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: rgb(163, 69, 21);
+    text-decoration:none;
+    font-size: 20px;
+    padding: 6px;
+    display:flex;
+  
+    
+}
+
+nav ul li a:hover {
+    color: #f08214;
+}
+
+
+.cart-icon {
+            position: relative;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        #cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: red;
+            color: white;
+            border-radius: 50%;
+            padding: 5px 10px;
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 300px;
+            height: 100%;
+            background-color: #e49409;
+            transition: right 0.3s ease;
+            padding: 20px;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            margin-top: 20px;
+        }
+
+        .cart-total {
+            margin-top: 20px;
+        }
+
+        .checkout-btn {
+            background-color: #7b4c06e9;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .payment-section {
+            margin: 20px;
+            background-color: #dea108;
+            padding: 20px;
+            border-radius: 8px;
+            display: none;
+        }
+
+
+        .menu-section {
+    text-align: center;
+    padding: 40px;
+    background-color: #fff;
+    max-width: 1200px; 
+    margin: 0 auto;
+}
+
+.menu-categories {
+    display: flex;
+    justify-content: center; 
+    gap: 10px; 
+    margin-bottom: 20px;
+}
+
+.menu-categories button {
+    background-color: #8B4513;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.menu-items {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    text-align: 10px;
+}
+
+
+
+.item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    text-align:center;
+}
+
+.image-container {
+    position: relative; 
+   
+    
+}
+
+.item img {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+   object-fit: cover;
+    margin-right: 5px;
+   
+}
+.add-to-cart-btn {
+
+    bottom: 50px; 
+    left: 10%; 
+    transform: translateX(-50%);
+            background-color:  #ff5722;
+            color: white;
+            padding: 5px;
+            cursor: pointer;
+            bottom: 10px;
+            padding: 10px 15px; 
+            border: none;
+            border-radius: 5px; 
+            cursor: pointer;
+            font-size: 16px; 
+            opacity: 0.9; 
+         transition: background-color 10s, transform 10s; 
+        }
+ .add-to-cart-btn:hover {
+    background-color: #210d07; 
+    transform: translateX(-50%) scale(1.05); 
+}       
+       
+ #success-msg {
+            text-align: center;
+            margin-top: 50px;
+            display: none;
+        }
+        .item h3 {
+    margin: 10px 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.item p {
+    font-size: 18px;
+    color: #555;
+}
+
+.more-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #8B4513;
+}
+
+.more-link:hover {
+    color: #A0522D;
+}
+.footer {
+        background-image: url('WhatsApp Image 2024-10-14 at 09.52.16_b96d5b9e.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        width: 100%;
+        height: 350px;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+   
+    .footer-content {
+        background-color: rgba(198, 109, 7, 0.6); 
+        padding: 15px;
+        border-radius: 8px;
+        width: 100%;
+        height: 150px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer div {
+        flex: 1;
+        text-align: center;
+        margin: 5px 0;
+    }
+
+    .footer a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+
+    .footer-links{
+    width: 85%;
+    margin: auto;
+    display:flex;
+    flex-wrap:wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap:20px
+   }
+   .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 80%; 
+    flex-wrap: wrap;
+    width: 80%; 
+    max-width: 1200px; 
+}
+
+.footer-col {
+    flex: 1; 
+    margin: 20px;
+}
+
+.footer-col h1, .footer-col h3 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.footer-col p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.footer-col a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0px;
+    font-size: 16px;
+}
+
+.footer-col a:hover {
+    color:#f08214;
+}
+.social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #f08214; 
+}
+
+    .footer a:hover {
+        text-decoration: underline;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Untitled.png" alt="Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="story.html">Our Story</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="contec.php">Contact</a></li>
+            </ul>
+            <div class="cart-icon" id="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </div>
+          
+            <div class="cart">
+                <a href="cheakout.html">
+            
+            
+                </a>
+            </div>
+        </nav>
+    </header>
+    <section class="hero">
+    <section class="menu-section">
+        <div class="menu-categories">
+            <button onclick="location.href='shop.html'">Hot Beverages</button>
+                <button onclick="location.href='cold.html'">Cold Beverages</button>
+                <button onclick="location.href='sandwich.html'">Sandwiches</button>
+                <button onclick="location.href='waffles.html'">Waffles</button>
+        </div>
+  </section>
+  
+        <div class="menu-items">
+            <div class="item">
+                <div class="image-container">
+                    <img src="c1.jpg" alt="Cold Coffee">
+                    <button class="add-to-cart-btn" data name="Cold coffe" data-price="650">Add to Cart</button>
+                    <h3>Cold Coffee</h3>
+                    <p>Rs.780.00</p>
+                   
+                </div>
+            
+            </div>
+           
+            <div class="item">
+                <div class="image-container">
+                    <img src="c2.jpg" alt="Hony Coffe">
+                    <button class="add-to-cart-btn" data name="Hony Coffee" data-price="650">Add to Cart</button>
+                    <h3>Hony Coffee</h3>
+                    <p>Rs.650.00</p>
+                 
+                </div>
+                
+            </div>
+            <div class="item">
+                <div class="image-container">
+                    <img src="c3.jpg" alt="Coffee Milkshake">
+                    <button class="add-to-cart-btn" data name="Coffee Milkshake" data-price="700">Add to Cart</button>
+                
+                <h3>Coffee Milkshake</h3>
+                <p>Rs.700.00</p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="image-container">
+                    <img src="Untitled,.jpg" alt="Cafe">
+                    <button class="add-to-cart-btn" data name="cafe" data-price="680">Add to Cart</button>
+                </div>
+                <h3>Cafe</h3>
+                <p>Rs.680.00</p>
+            </div>
+            <div class="item">
+                <div class="image-container">
+                    <img src="Screenshot 2024-10-03 210245.png" alt="Faluda Cafe">
+                    <button class="add-to-cart-btn" data name="Faluda Cafe" data-price="800">Add to Cart</button>
+                
+                <h3>Faluda Cafe</h3>
+                <p>Rs.800.00</p>
+            </div>
+        </div>
+           
+        </div>
+        <a href="#" class="more-link">More see</a>
+ <!-- Cart Sidebar -->
+ <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+        <h2>My Cart</h2>
+        <button class="close-btn" id="close-btn">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-total">
+        <p>Total: Rs. <span id="total-price">0.00</span></p>
+    </div>
+    <a href="cheakout.php">
+    <button class="checkout-btn" id="checkout-btn">Checkout</button>
+    </a>
+</div>
+
+</section>
+
+
+
+<div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+        <h2>My Cart</h2>
+        <button class="close-btn" id="close-btn">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-total">
+        <p>Total: Rs. <span id="total-price">0.00</span></p>
+    </div>
+    <a href="cheakout.php"></a>
+    <button class="checkout-btn" id="checkout-btn">Checkout</button>
+</div>
+
+
+<div id="success-msg">
+    <h2>Payment Successful!</h2>
+</div>
+
+<script>
+    
+     document.addEventListener("DOMContentLoaded", function () {
+        const cartIcon = document.getElementById("cart-icon");
+        const cartSidebar = document.getElementById("cart-sidebar");
+        const closeBtn = document.getElementById("close-btn");
+        const cartItemsContainer = document.getElementById("cart-items");
+        const checkoutBtn = document.getElementById("checkout-btn");
+        const paymentSection = document.getElementById("payment-section");
+        const successMsg = document.getElementById("success-msg");
+        const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+        let cart = [];
+        let total = 0;
+
+        function showCart() {
+            cartSidebar.style.right = "0";
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            cartItemsContainer.innerHTML = "";
+            total = 0;
+
+            cart.forEach(item => {
+                const itemElement = document.createElement("div");
+                itemElement.classList.add("cart-item");
+                itemElement.innerHTML = `
+                    <p>(${item.quantity}x) ${item.name} - Rs. ${item.price}</p>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+                total += item.price * item.quantity;
+            });
+
+            document.getElementById("total-price").textContent = total.toFixed(2);
+            document.getElementById("cart-count").textContent = cart.length;
+        }
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                const itemName = button.getAttribute("data-name");
+                const itemPrice = parseFloat(button.getAttribute("data-price"));
+
+                const existingItem = cart.find(item => item.name === itemName);
+
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ name: itemName, price: itemPrice, quantity: 1 });
+                }
+
+                updateCartDisplay();
+            });
+        });
+
+        cartIcon.addEventListener("click", showCart);
+        closeBtn.addEventListener("click", function () {
+            cartSidebar.style.right = "-400px";
+        });
+
+        checkoutBtn.addEventListener("click", function () {
+            paymentSection.style.display = "block";
+            cartSidebar.style.right = "-400px";
+        });
+
+        document.getElementById("payment-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            successMsg.style.display = "block";
+            paymentSection.style.display = "none";
+            cart = [];
+            updateCartDisplay();
+        });
+    });
+
+</script>
+
+<div class="footer">
+    <div class="footer-content">
+        <div class="footer-left">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <h2>Brew And Beans</h2>
+                    <img src="Untitled.png" alt="Coffee Logo" class="logo">
+                    </div>
+                    <div class="footer-col">
+                       <ul>
+                            <h2>Explore</h2>
+                    <a href="index.html">Home</a>
+                    <a href="story.html">Our Story</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="menu.html">Menu</a>
+                    <a href="contec.php">Contact</a>
+                    </ul>
+                </div>
+    
+                <div class="footer-col">
+                    <h3>Contact With Us</h3>
+                    <p>High Level, Colombo 06</p>
+                    <p>+94112367464</p>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                   
+                </div>
+            </div>
+</div>
+
+
+
+
+    
+</body>
+</html>
